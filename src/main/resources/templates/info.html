@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="common/header::html"/>
+
+<body>
+<form id="ff" action="zk/saveData" method="post">
+  <input th:type="hidden" id="nodePath" th:value="${path}" name="path"/>
+  <input th:type="hidden" id="currentCacheId" th:value="${cacheId}" name="cacheId"/>
+  <div>
+    <table>
+      <tr>
+        <td><label>data：</label></td>
+        <td>
+          <textarea rows="4" cols="100" id="currentData" name="data" th:text="${data}"></textarea>
+        </td>
+      </tr>
+      <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'" id="saveData" onclick="javascript:saveNodeData();">保存</a>
+
+      <tr>
+        <td><label>czxid：</label></td>
+        <td th:text="${czxid}"></td>
+      </tr>
+      <tr>
+        <td><label>mzxid：</label></td>
+        <td th:text="${mzxid }"></td>
+      </tr>
+      <tr>
+        <td><label>ctime：</label></td>
+        <td th:text="${ctime }"></td>
+      </tr>
+      <tr>
+        <td><label>mtime：</label></td>
+        <td th:text="${mtime }"></td>
+      </tr>
+      <tr>
+        <td><label>version：</label></td>
+        <td th:text="${version }"></td>
+      </tr>
+      <tr>
+        <td><label>cversion：</label></td>
+        <td th:text="${cversion }"></td>
+      </tr>
+      <tr>
+        <td><label>aversion：</label></td>
+        <td th:text="${aversion }"></td>
+      </tr>
+      <tr>
+        <td><label>ephemeralOwner：</label></td>
+        <td th:text="${ephemeralOwner }"></td>
+      </tr>
+      <tr>
+        <td><label>dataLength：</label></td>
+        <td th:text="${dataLength }"></td>
+      </tr>
+      <tr>
+        <td><label>numChildren：</label></td>
+        <td th:text="${numChildren }"></td>
+      </tr>
+      <tr>
+        <td><label>pzxid：</label></td>
+        <td th:text="${pzxid }"></td>
+      </tr>
+      <tr th:each="acl:${acls}">
+        <td><label>scheme</label></td>
+        <td th:text="${acl.scheme }">${acl.scheme }</td>
+      </tr>
+      <tr th:each="acl:${acls}">
+        <td><label>id</label></td>
+        <td th:text="${acl.id }">${acl.scheme }</td>
+      </tr>
+      <tr th:each="acl:${acls}">
+        <td><label>permissions</label></td>
+        <td th:text="${acl.perms }">${acl.scheme }</td>
+      </tr>
+    </table>
+  </div>
+  <br/>
+</form>
+
+
+</body>
+</html>
